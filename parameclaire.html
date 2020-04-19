@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+    
+  <head>
+      
+    <title>Smart City</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+
+    <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/popper.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>      
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="css/styles.css"> 
+      
+  </head>
+    
+  <body  style="background:url('images/bg.jpg') no-repeat center center; align-content: center; background-attachment: fixed;">
+    <div class="container-fluid">   
+      <nav class="row navbar navbar-light navbar-expand-lg justify-content-between navbar-fixed-top" style="color: white; font-size: 20px;">
+        <div class="col-xs-2" style=" margin-left: 8px; margin-top: 20px;">
+          <a>
+            <img src="icons/bg-smtct-icon.png" width="45" height="60" class="d-inline-block align-top" alt="brand">
+            <h6 style="color: white">S M A R T . C I T Y</h6>    
+          </a>
+        </div>
+
+        <div class="col-xs-6 form-inline" style="text-align: right;">
+               
+        </div>
+
+        <div class="col-xs-4 form-inline but-nav">
+          
+          <div class="dropdown" >
+
+            <button type="button" class="btn dropdown-toggle bsimulation"  data-toggle="dropdown">
+              Simulation
+            </button>
+
+            <div class="dropdown-menu" >
+              <a class="dropdown-item" href="simuleclaire.php">Éclairage</a>
+              <hr>
+              <a class="dropdown-item" href="simultrafic.php">Trafic routier</a>
+              <hr>
+              <a class="dropdown-item" href="simulpollu.php">Pollution</a>
+            </div>
+          </div>
+
+          <div class="dropdown" >
+            <button type="button" class="btn dropdown-toggle bsimulation" data-toggle="dropdown">
+              Paramétrage
+            </button>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="parameclaire.php">Éclairage</a>
+              <hr>
+              <a class="dropdown-item" href="paramtrafic.php">Trafic routier</a>
+              <hr>
+              <a class="dropdown-item" href="parampollu.php">Pollution</a>
+            </div>
+          </div> 
+                    
+          <button type="button" class="btn  bsimulation "><a href="index.html" style="color:white;">Déconnexion</a></button>
+                
+          <a href="profil.html"><button type="button" class="brond" data-toggle="tooltip" title="profil" style="background: url('images/profil45x45.jpg') no-repeat center center;"></button></a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- formulaire -->
+    <div class="formulaire">
+      <div class="info-formulaire">
+        <div class="contenue add-light-form">
+          Éclairage
+        </div>
+      </div>
+
+      <form action="parameclaire-script.php" method="post" name="parameclaire">
+        <div class="eclairage-form" style="position: absolute;">
+          <div class="parametre-form">
+
+            <div class="nom-de-parametre">
+              <label>Code lampe</label>
+              <input type="text" name="codeLampe"/>
+            </div>
+            
+            <div class="data-of-street">
+              <div class="nom-de-parametre">
+                <label>Nom de Rue</label> 
+                <input type="text" name="nomRue"/>
+              </div>
+              <div class="nom-de-parametre">
+                <label>Code rue</label> 
+                <input type="text" name="codeRue"/>
+              </div>
+            </div>
+
+            <div class="nom-de-parametre">
+              <label>Période de mise à jour</label>
+              <input type="datetime-local" name="periodeMajE"/>
+            </div>
+            
+            <div class="nom-de-parametre lampe-etat">
+              <label>État de Lampe</label>
+              <div class="choisir-etat">
+                <div class="option">
+                  <div class="choisir eclairage">
+                    <input id="etatTraficFaible" type="radio" value="Moins lumineux" name="etatLampe">
+                    <label class="etat eclairage" for="etatTraficFaible">Moins lumineux</label>
+                  </div>
+                  
+                  <div class="choisir eclairage">
+                    <input id="etatTraficMoyen" type="radio" value="Fils cassés" name="etatLampe">
+                    <label class="etat eclairage" for="etatTraficMoyen">Fils cassés</label>
+                  </div>
+                  
+                  <div class="choisir eclairage">
+                    <input id="etatTraficEleve" type="radio" value="Bon état " name="etatLampe">
+                    <label class="etat eclairage" for="etatTraficEleve">Bon état</label>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+          <div class="inserer"><input type="submit" value="Inserer" name="inserer"/></div>
+        </div>
+      </form>
+    </div>
+
+    <!-- formulaire end -->
+
+  </body>
+    
+</html>

@@ -1,0 +1,78 @@
+<?php
+
+if (isset($_POST['identifiant']) && isset($_POST['motdepasse'])) {
+  $host = 'localhost'; //Tên server, nếu dùng hosting free thì cần thay đổi
+  $dbname = 'smartcitybdd'; //Đây là tên của Database
+  $username = 'root'; //Tên sử dụng Database
+  $password = '';//Mật khẩu của tên sử dụng Database
+  $connection_db = mysqli_connect($host, $username, $password, $dbname);
+  if (!$connection_db) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+  $id = $_POST['identifiant'];
+  $pass = $_POST['motdepasse'];
+  $query = "SELECT identifiant FROM account WHERE identifiant='$id' AND motdepasse='$pass'";
+  $result = mysqli_query($connection_db, $query);
+  if (mysqli_num_rows($result) == 1) {
+    // output data of each row
+    $row = mysqli_fetch_assoc($result);
+    header('Location: http://localhost/smartcity/admin/profil.html');
+  } else {
+      echo "0 results";
+  }
+}
+
+?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+
+    <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/popper.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>      
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+      
+    <link rel="stylesheet" href="css/styles.css"> 
+    <title>Smart City</title>
+  </head>
+  <body>
+    <div class="root root--blur">
+      <div class="login">
+
+        <div class="login-header">
+          <img src="images/signin-avatar.png" alt="Avatar"/>
+        </div>
+
+        <form action="index.php?do=login" method="POST">
+
+        <div class="login-content">
+
+            <div class="input-group">
+              <img src="icons/signin-identifiant.png" alt="Id icon" type="text" required="">
+              <input name="identifiant" placeholder="Identifiant" type="text" required=""/>
+              <hr/> 
+            </div>
+
+            <div class="input-group">
+              <img src="icons/signin-password.png" alt="pass icon" type="password" required=""/>
+              <input name="motdepasse" placeholder="Password" type="password" required=""/>
+              <hr/>
+            </div>
+
+          </div>
+
+          <div class="login-action">
+            <input type="submit" value="SE CONNECTER" name="seconnecter"> 
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </body>
+</html>
